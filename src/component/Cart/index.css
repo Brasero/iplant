@@ -5,7 +5,8 @@
     display: flex;
     flex-direction: column;
     background-color: #31b572;
-    width: 200px;
+    width: 250px;
+    transition: all 0.5s ease-in-out;
     position: relative;
 }
 
@@ -16,6 +17,7 @@
     background-image: linear-gradient(90deg, white -100px, #357c59 );
     background-clip: text;
     border: 0;
+    padding: 15px;
     color: transparent;
     text-transform: uppercase;
     font-size: 1.1rem;
@@ -26,4 +28,18 @@
 
 .cartContainer:hover>.toggleCartButton{
     color: white;
+}
+
+.cartContainerClosed{
+    width: 90px;
+    background: #31b572;
+    color: white;
+    position: relative;
+}
+
+.cartContainerClosed>.toggleCartButton{
+    color: white;
+    position: absolute;
+    max-width: 90px;
+    word-wrap: wrap;
 }

@@ -4,7 +4,6 @@ import logo from '../../assets/icon/leaf.png';
 
 function NavBar(){
 
-
     return (
         <>
             <div className="iplant-nav" style={{

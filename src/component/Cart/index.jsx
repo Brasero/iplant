@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
 
 //Rappel des consigne : 
@@ -7,24 +7,31 @@ import './index.css';
 
 function Cart({cart}){
 
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleCart = () => {
+        setIsOpen(!isOpen)
+    }
+
     return (
         <>
-            <div className='cartContainer'>
-                <button className="toggleCartButton">
-                    Fermer
+            <div className={isOpen ? 'cartContainer' : 'cartContainer cartContainerClosed'}>
+            <button className="toggleCartButton" onClick={()=>toggleCart()}>
+                    {
+                        isOpen ?  'fermer' : 'ouvrir le panier'
+                    }
                 </button>
                 <ul>
-                    {cart.map((product, index) => {
+                    {isOpen && cart.map((product, index) => {
                         return <li 
                         key={`${product.name}-${index}`}>{product.name} {product.price}€</li>
                     })}
                 </ul>
                 <div>
-                    Total : {cart.reduce((acc, product) => 
+                    {isOpen && 'Total : '+cart.reduce((acc, product) => 
                         acc+product.price
                         , 0
 
-                    )}€
+                    )+'€'}
                 </div>
             </div>
         </>

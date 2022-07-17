@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {plantList} from '../../data/plantList/plantList';
 
 import { AiFillFire, AiOutlineFire } from 'react-icons/ai';
@@ -18,6 +18,8 @@ function Product({cart, setCart}){
          acc.includes(plant.category) ? acc : acc.concat(plant.category), []
     )
 
+    const [filtre, setFiltre] = useState('');
+
     const handleClick = (product) => {
         const actual = cart;
         const newCart = actual.concat(product);
@@ -27,7 +29,7 @@ function Product({cart, setCart}){
     return (
         <>
             <div className="productCategorie">
-                <select value="">
+                <select value={filtre} onChange={(e) => setFiltre(e.target.value)}>
                     <option value=''>----</option>
                     {
                         categories.map((cat) => {
@@ -41,10 +43,28 @@ function Product({cart, setCart}){
                 <ul className="productContainer">
                     {
                         products.map((product) => {
-                            return <li key={product.id}>
-                                <div className="price">{product.price} €</div>
+                           return (product.category === filtre || filtre === '') &&  (
+                            <li key={product.id}>
+                                <div className="price">
+                                    {
+                                        `${product.price} €`
+                                    }
+                                </div>
                                 <img src={product.img} alt={`${product.name}-img`} />
-                                {product.name}  {product.isBestSale ? <AiFillFire className="fillIcon" /> : <AiOutlineFire />} <button className="productButton" onClick={() => handleClick(product)}>+Ajouter</button></li>
+                                {
+                                    product.name
+                                }  
+                                {
+                                    product.isBestSale ? 
+                                    <AiFillFire className="fillIcon" /> 
+                                    :
+                                    <AiOutlineFire />
+                                } 
+                                <button className="productButton" onClick={() => handleClick(product)}>
+                                    +Ajouter
+                                </button>
+                            </li>
+                            )
                         })
                     }
                 </ul>

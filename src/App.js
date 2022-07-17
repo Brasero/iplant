@@ -11,8 +11,10 @@ function App() {
   return (
     <>
       <NavBar />
-      <Cart cart={cart}/>
-      <Product cart={cart} setCart={setCart} />
+      <div className='layout'>
+        <Cart cart={cart}/>
+        <Product cart={cart} setCart={setCart} />
+      </div>
     </>
   );
 }

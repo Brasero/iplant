@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 //Rappel des consigne : 
 //Styliser votre component Cart.jsx pour qu'il ai un padding de 32px, du texte blanc et un background-color #31b572
@@ -8,11 +9,10 @@ function Cart({cart}){
 
     return (
         <>
-            <div style={{
-                padding: '32px',
-                color: 'white',
-                backgroundColor: '#31b572',
-            }}>
+            <div className='cartContainer'>
+                <button className="toggleCartButton">
+                    Fermer
+                </button>
                 <ul>
                     {cart.map((product, index) => {
                         return <li 

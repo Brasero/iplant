@@ -26,18 +26,29 @@ function Product({cart, setCart}){
 
     return (
         <>
-            <ul>
-                {categories.map((cat) => {
-                    return <li key={cat}>{cat}</li>
-                })}
-            </ul>
-            <ul className="productContainer">
-                {
-                    products.map((product) => {
-                        return <li key={product.id}>{product.name} : {product.price}€ {product.isBestSale ? <AiFillFire className="fillIcon" /> : <AiOutlineFire />} <button className="productButton" onClick={() => handleClick(product)}>+Ajouter</button></li>
-                    })
-                }
-            </ul>
+            <div className="productCategorie">
+                <select value="">
+                    <option value=''>----</option>
+                    {
+                        categories.map((cat) => {
+                            return (
+                                <option key={cat} value={cat}>{cat}</option>
+                            )
+                        })
+                    }
+                </select>
+
+                <ul className="productContainer">
+                    {
+                        products.map((product) => {
+                            return <li key={product.id}>
+                                <div className="price">{product.price} €</div>
+                                <img src={product.img} alt={`${product.name}-img`} />
+                                {product.name}  {product.isBestSale ? <AiFillFire className="fillIcon" /> : <AiOutlineFire />} <button className="productButton" onClick={() => handleClick(product)}>+Ajouter</button></li>
+                        })
+                    }
+                </ul>
+            </div>
         </>
     )
 }

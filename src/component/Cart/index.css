@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     background-color: #31b572;
-    width: 250px;
+    width: 400px;
     transition: all 0.5s ease-in-out;
     position: relative;
 }
@@ -42,4 +42,32 @@
     position: absolute;
     max-width: 90px;
     word-wrap: wrap;
+}
+
+.cart{
+    padding: 0;
+}
+
+.cartElementContainer{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.elementName{
+    font-weight: 800;
+    flex: 5;
+    margin-right: auto;
+}
+
+.elementPrice{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.elementPrice, .elementAmount, .elementMulti{
+    flex: 2;
+    text-align: center;
 }

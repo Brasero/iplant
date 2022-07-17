@@ -21,9 +21,21 @@ function Product({cart, setCart}){
     const [filtre, setFiltre] = useState('');
 
     const handleClick = (product) => {
-        const actual = cart;
-        const newCart = actual.concat(product);
-        setCart(newCart);
+
+        const addedPlantSaved = cart.find((plant) => plant.name === product.name)
+        
+        if(addedPlantSaved){
+            console.log(addedPlantSaved)
+            const cartFiltered = cart.filter((cartItem) => cartItem.name !== product.name)
+            setCart([...cartFiltered, {...addedPlantSaved, amount: addedPlantSaved.amount + 1}])
+        } else {
+            const newProduct = {name: product.name,price: product.price, id: product.id, amount: 1}
+            setCart([...cart, newProduct])
+        }
+
+        //const actual = cart;
+        //const newCart = actual.concat(product);
+        //setCart(newCart);
     }
 
     return (

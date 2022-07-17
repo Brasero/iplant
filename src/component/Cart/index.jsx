@@ -20,15 +20,15 @@ function Cart({cart}){
                         isOpen ?  'fermer' : 'ouvrir le panier'
                     }
                 </button>
-                <ul>
+                <ul className="cart">
                     {isOpen && cart.map((product, index) => {
                         return <li 
-                        key={`${product.name}-${index}`}>{product.name} {product.price}€</li>
+                        key={`${product.name}-${index}`} className="cartElementContainer"><span className="elementName">{product.name}</span>  <span className="elementPrice">{product.price}€</span><span className="elementMulti"> x </span><span className="elementAmount">{product.amount}</span> </li>
                     })}
                 </ul>
                 <div>
                     {isOpen && 'Total : '+cart.reduce((acc, product) => 
-                        acc+product.price
+                        acc+product.price * product.amount
                         , 0
 
                     )+'€'}

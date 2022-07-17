@@ -5,11 +5,15 @@ import './index.css';
 //Styliser votre component Cart.jsx pour qu'il ai un padding de 32px, du texte blanc et un background-color #31b572
 
 
-function Cart({cart}){
+function Cart({cart, setCart}){
 
     const [isOpen, setIsOpen] = useState(false)
     const toggleCart = () => {
         setIsOpen(!isOpen)
+    }
+
+    const handlePurge = () => {
+        setCart([])
     }
 
     return (
@@ -33,6 +37,7 @@ function Cart({cart}){
 
                     )+'€'}
                 </div>
+                {isOpen && <button className="purgeButton" onClick={() => handlePurge()}>Vider le panier</button>}
             </div>
         </>
     )

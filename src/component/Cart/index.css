@@ -28,6 +28,11 @@
 
 .cartContainer:hover>.toggleCartButton{
     color: white;
+    transition: all 500ms ease-in-out;
+}
+
+.toggleCartButton:hover{
+    text-decoration: underline;
 }
 
 .cartContainerClosed{
@@ -57,10 +62,12 @@
     text-transform: capitalize;
 }
 
+
+
 .elementName{
     font-weight: 800;
     flex: 5;
-    margin-right: auto;
+    min-width: 90px;
 }
 
 .elementPrice{
@@ -70,4 +77,25 @@
 .elementPrice, .elementAmount, .elementMulti{
     flex: 2;
     text-align: center;
+}
+
+.elementPrice, .elementMulti{
+    margin-right: 5px;
+}
+
+.purgeButton{
+    border: 1px solid rgb(216, 79, 79);
+    border-radius: 7.5px;
+    padding: 5px 15px;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 10px;
+    color: rgb(216, 79, 79);
+    transition: all 500ms ease-in-out;
+}
+
+.purgeButton:hover{
+    background: rgb(216, 79, 79);
+    color: white;
 }

@@ -12,7 +12,7 @@ function App() {
     <>
       <NavBar />
       <div className='layout'>
-        <Cart cart={cart}/>
+        <Cart cart={cart} setCart={setCart}/>
         <Product cart={cart} setCart={setCart} />
       </div>
     </>

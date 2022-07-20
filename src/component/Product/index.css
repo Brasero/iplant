@@ -82,12 +82,37 @@
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    padding: 0;
+    padding: 3px;
     background: #31b572;
     font-weight: 600;
+    font-size: 0.7rem;
     transition: all 0.8s ease-in-out;
     color: white;
 }
 .productContainer>li:hover>.price{
     box-shadow: unset;
+}
+
+.catSelect{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    padding: .5em 2em .5em .9em;
+    cursor: pointer;
+    color:  white;
+    font-family: inherit;
+    font-size: 1em;
+    border: 1px solid #31b572;
+    border-radius: .2em;
+    background-color: #31b572;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMjAwJyBoZWlnaHQ9JzIwMCcgZmlsbD0iIzAwMDAwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHg9IjBweCIgeT0iMHB4Ij48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMTIgMThsLTExLjAxOS0xMWgyMi4wMzh6Ii8+PC9zdmc+);
+    background-size: .8em;
+    background-repeat: no-repeat;
+    background-position: calc(100% - .4em) center;
+}
+
+.catSelect:focus{
+    outline-offset: 0;
+    outline: unset;
 }

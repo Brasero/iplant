@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
-import {plantList} from '../../data/plantList/plantList';
+import React, { useEffect, useState } from 'react';
 
 import { AiFillFire, AiOutlineFire } from 'react-icons/ai';
 
+import Axios from 'axios';
+
 import './index.css';
+import { Link } from 'react-router-dom';
 
-//const categori = plantList.reduce(() => {}, [])
-
-//Créer une liste de category extraite de la list des plantes, et afficher cet liste au dessus de la liste des plantes
-
-//Renseigner les key de vos li
 
 function Product({cart, setCart}){
     
-    const products = plantList;
-    const categories = plantList.reduce((acc, plant) => 
+    const [products, setProducts] = useState([]);
+    const categories = products.reduce((acc, plant) => 
          acc.includes(plant.category) ? acc : acc.concat(plant.category), []
     )
+
+    useEffect(() =>  {
+        Axios.get('http://localhost:8888/iPlantApi').then((data) => {
+            setProducts(data.data);
+        })
+    }, [])
 
     const [filtre, setFiltre] = useState('');
 
@@ -25,28 +28,23 @@ function Product({cart, setCart}){
         const addedPlantSaved = cart.find((plant) => plant.name === product.name)
         
         if(addedPlantSaved){
-            console.log(addedPlantSaved)
             const cartFiltered = cart.filter((cartItem) => cartItem.name !== product.name)
             setCart([...cartFiltered, {...addedPlantSaved, amount: addedPlantSaved.amount + 1}])
         } else {
             const newProduct = {name: product.name,price: product.price, id: product.id, amount: 1}
             setCart([...cart, newProduct])
         }
-
-        //const actual = cart;
-        //const newCart = actual.concat(product);
-        //setCart(newCart);
     }
 
     return (
         <>
             <div className="productCategorie">
-                <select value={filtre} onChange={(e) => setFiltre(e.target.value)}>
+                <select value={filtre} onChange={(e) => setFiltre(e.target.value)} className="catSelect">
                     <option value=''>----</option>
                     {
                         categories.map((cat) => {
                             return (
-                                <option key={cat} value={cat}>{cat}</option>
+                                <option key={cat} value={cat} className="catOption">{cat}</option>
                             )
                         })
                     }
@@ -62,7 +60,7 @@ function Product({cart, setCart}){
                                         `${product.price} €`
                                     }
                                 </div>
-                                <img src={product.img} alt={`${product.name}-img`} />
+                                <img src={`./img/${product.img}`} alt={`${product.name}-img`} />
                                 {
                                     product.name
                                 }  
@@ -74,6 +72,9 @@ function Product({cart, setCart}){
                                 } 
                                 <button className="productButton" onClick={() => handleClick(product)}>
                                     +Ajouter
+                                </button>
+                                <button className="productButton">
+                                    <Link to={`/product/${product.id}/edit`} >Modifier produit</Link>
                                 </button>
                             </li>
                             )

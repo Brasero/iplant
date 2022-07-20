@@ -35,7 +35,7 @@ function Cart({cart, setCart}){
                         acc+product.price * product.amount
                         , 0
 
-                    )+'€'}
+                    ).toLocaleString(undefined, { maximumFractionDigits: 2 })+'€'}
                 </div>
                 {isOpen && <button className="purgeButton" onClick={() => handlePurge()}>Vider le panier</button>}
             </div>

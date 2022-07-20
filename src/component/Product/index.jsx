@@ -5,12 +5,6 @@ import { AiFillFire, AiOutlineFire } from 'react-icons/ai';
 
 import './index.css';
 
-//const categori = plantList.reduce(() => {}, [])
-
-//Créer une liste de category extraite de la list des plantes, et afficher cet liste au dessus de la liste des plantes
-
-//Renseigner les key de vos li
-
 function Product({cart, setCart}){
     
     const products = plantList;

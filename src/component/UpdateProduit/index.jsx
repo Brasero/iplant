@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import CategorieList from '../CategorieList';
 import axios from 'axios';
 
@@ -15,6 +15,7 @@ function UpdateProduit(){
         img: '',
     });
 
+    const navigate = useNavigate();
     const {id} = useParams();
 
     useEffect(() => {
@@ -35,8 +36,9 @@ function UpdateProduit(){
         axios.put(`http://localhost:8888/iPlantApi/?action=updateProduct&id=${product.id}`, product).then((response) => {
             if(response.data === true){
                 alert('Produit modifier avec succées')
+                navigate({to: '/'})
             } else {
-                alert('Une erreur s\'est produite.');
+                alert('Une erreur s\'est produite.')
             }
         })
     }
@@ -63,7 +65,7 @@ function UpdateProduit(){
                 <label htmlFor="isBestSale">
                     Meilleure vente ?
                 </label>
-                <input type="checkbox" id="isBestSale" value={product.isBestSale} onClick={() => switchBest()}/>
+                <input type="checkbox" id="isBestSale" value={product.isBestSale} checked={product.isBestSale} onChange={() => switchBest()}/>
 
                 <CategorieList value={product.category} changeValue={handleChange} />
 

@@ -1,31 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
 
 //Rappel des consigne : 
 //Styliser votre component Cart.jsx pour qu'il ai un padding de 32px, du texte blanc et un background-color #31b572
 
 
-function Cart({cart}){
+function Cart({cart, setCart}){
+
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleCart = () => {
+        setIsOpen(!isOpen)
+        console.log(isOpen)
+    }
+
+    const handleDelete = () => {
+        setCart([])
+    }
+
+
 
     return (
         <>
-            <div className='cartContainer'>
-                <button className="toggleCartButton">
-                    Fermer
+            <div className={isOpen ? 'cartContainer' : 'cartContainer cartContainerClosed'}>
+                <button className="toggleCartButton" onClick={() => toggleCart()}>
+                    {
+                        isOpen ? 'Fermer' : 'Ouvrir'
+                    }
                 </button>
-                <ul>
-                    {cart.map((product, index) => {
+                <ul className="cart">
+                    { isOpen && cart.map((product, index) => {
                         return <li 
-                        key={`${product.name}-${index}`}>{product.name} {product.price}€</li>
+                        key={`${product.name}-${index}`} className="cartElementContainer">
+                            <span className="elementName">
+                                {product.name}
+                            </span>
+
+                            <span className="elementPrice">
+                                {product.price} €
+                            </span>
+
+                            <span className="elementMulti">
+                                x
+                            </span>
+
+                            <span className="elementAmount">
+                                {product.amount}
+                            </span>
+                        </li>
                     })}
                 </ul>
                 <div>
-                    Total : {cart.reduce((acc, product) => 
-                        acc+product.price
+                    {isOpen && 'Total : '+cart.reduce((acc, product) => 
+                        acc+product.price * product.amount
                         , 0
 
-                    )}€
+                    )+'€'}
                 </div>
+                {
+                 isOpen &&  <button class="purgeButton" onClick={() => handleDelete()}>
+                    Vider le panier
+                </button>
+                }
             </div>
         </>
     )

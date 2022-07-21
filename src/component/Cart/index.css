@@ -5,8 +5,12 @@
     display: flex;
     flex-direction: column;
     background-color: #31b572;
-    width: 200px;
+    width: 300px;
     position: relative;
+    transition: all 500ms ease-in-out;
+    padding: 0 10px;
+    padding-top: 40px;
+    gap: 15px;
 }
 
 .toggleCartButton{
@@ -25,5 +29,59 @@
 }
 
 .cartContainer:hover>.toggleCartButton{
+    color: white;
+}
+
+.cartContainer.cartContainerClosed{
+    width: 55px;
+}
+
+.cart{
+    padding: 0;
+    padding-left: 5px;
+}
+
+.cartElementContainer{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.elementName{
+    font-weight: 800;
+    flex: 5;
+    min-width: 90px;
+}
+
+.elementPrice{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.elementPrice, .elementAmount, .elementMulti{
+    flex: 2;
+    text-align: center;
+}
+
+.elementPrice, .elementMulti{
+    margin-right: 5px;
+}
+
+.purgeButton{
+    border: 1px solid rgb(216, 79, 79);
+    border-radius: 7.5px;
+    padding: 5px 15px;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 10px;
+    color: rgb(216, 79, 79);
+    transition: all 500ms ease-in-out;
+}
+
+.purgeButton:hover{
+    background: rgb(216, 79, 79);
     color: white;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import logo from '../../assets/icon/leaf.png';
+import { Link } from 'react-router-dom'
 
 function NavBar(){
 
@@ -21,6 +22,10 @@ function NavBar(){
                     height: '45px',
                     aspectRatio: '1/1',
                 }} alt="logo-iplant" />
+
+                <Link to="/" >Produits</Link>
+                <Link to="/products/add">Ajouter produit</Link>
+
                 <h1>iPlant</h1>
             </div>
         </>

@@ -91,3 +91,10 @@
 .productContainer>li:hover>.price{
     box-shadow: unset;
 }
+
+.linkUpdate{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}

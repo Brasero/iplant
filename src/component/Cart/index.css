@@ -17,6 +17,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    margin-left: 10px;
     background-image: linear-gradient(90deg, white -100px, #357c59 );
     background-clip: text;
     border: 0;
@@ -33,7 +34,7 @@
 }
 
 .cartContainer.cartContainerClosed{
-    width: 55px;
+    width: 90px;
 }
 
 .cart{
@@ -84,4 +85,38 @@
 .purgeButton:hover{
     background: rgb(216, 79, 79);
     color: white;
+}
+
+
+@media screen and (max-width: 600px){
+
+    .cartContainer.cartContainerClosed{
+        width: -webkit-fill-available;
+        height: 15px;
+        overflow-y: hidden;
+    }
+
+    .cartContainer{
+        width: -webkit-fill-available;
+        height: 300px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .total, .purgeButton{
+        position: absolute;
+    }
+
+    .purgeButton{
+        bottom: 5px;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .total{
+        bottom: calc(5px + 45px);
+        left: 25%;
+        transform: translateX(-80%);
+    }
 }

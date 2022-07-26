@@ -2,3 +2,12 @@
     display: flex;
     flex-direction: row;
 }
+
+/*====== MEDIA QUERIES ====*/
+
+@media screen and (max-width: 600px){
+    .layout{
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -49,12 +49,12 @@ function Cart({cart, setCart}){
                         </li>
                     })}
                 </ul>
-                <div>
+                <div className="total">
                     {isOpen && 'Total : '+cart.reduce((acc, product) => 
                         acc+product.price * product.amount
                         , 0
 
-                    )+'€'}
+                    ).toLocaleString(undefined, { maximumFractionDigits: 2})+'€'}
                 </div>
                 {
                  isOpen &&  <button class="purgeButton" onClick={() => handleDelete()}>

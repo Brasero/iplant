@@ -18,7 +18,6 @@ function Product({cart, setCart}){
 
     useEffect(() => {
         axios.get('http://localhost:8888/?action=getProducts').then((response) => {
-            console.log(response.data)
             setProducts(response.data)
         })
     }, [])
@@ -82,13 +81,13 @@ function Product({cart, setCart}){
                                     +Ajouter
                                 </button>
 
-                                <Link to={`/products/update/${product.id}`}>
+                                <Link className="linkUpdate" to={`/products/update/${product.id}`}>
                                     <button className="productButton">
                                         Modifier
                                     </button>
                                 </Link>
 
-                                <button class="productButton" onClick={() => {handleDelete(product.id)}}>
+                                <button className="productButton" onClick={() => {handleDelete(product.id)}}>
                                     Supprimer
                                 </button>
                             </li>) : 
